@@ -1,0 +1,203 @@
+Lab 1. Create a Database & Table Using MySQL Command-Line Client.
+
+● Create a database with the name StudentManagementSystem.
+  CREATE DATABASE StudentManagementSystem;
+  Query OK, 1 row affected
+  
+  mysql> SHOW DATABASES;
+ +-------------------------+
+ | Database                |
+ +-------------------------+
+ | information_schema      |
+ | mysql                   |
+ | performance_schema      |
+ | sakila                  |
+ | studentmanagementsystem |
+ | sys                     |
+ | world                   |
+ +-------------------------+
+
+========================================================================================================================================================================
+
+Create a table with named Student with attributes:
+● StudentID (Primary Key)
+● FirstName
+● LastName
+● DateOfBirth
+● Gender
+● Email
+● Phone
+
+ USE studentmanagementsystem;
+ Database changed
+ mysql> CREATE TABLE Student (
+     -> StudentID varchar(25) PRIMARY KEY,
+     -> FirstName varchar(25) NOT NULL,
+     -> LastName varchar(25) NOT NULL,
+     -> DateOfBirth date,
+     -> Gender varchar(15) NOT NULL,
+     -> Email varchar(50) NOT NULL,
+     -> Phone bigint
+     -> );
+ Query OK, 0 rows affected
+
+ mysql> DESC Student;
+ +-------------+-------------+------+-----+---------+-------+
+ | Field       | Type        | Null | Key | Default | Extra |
+ +-------------+-------------+------+-----+---------+-------+
+ | StudentID   | varchar(25) | NO   | PRI | NULL    |       |
+ | FirstName   | varchar(25) | NO   |     | NULL    |       |
+ | LastName    | varchar(25) | NO   |     | NULL    |       |
+ | DateOfBirth | date        | YES  |     | NULL    |       |
+ | Gender      | varchar(15) | NO   |     | NULL    |       |
+ | Email       | varchar(50) | NO   |     | NULL    |       |
+ | Phone       | bigint      | YES  |     | NULL    |       |
+ +-------------+-------------+------+-----+---------+-------+
+ 7 rows in set
+
+========================================================================================================================================================================
+  
+Create a table with name Course with attributes:
+● CourseID (Primary Key)
+● CourseTitle
+● Credits
+
+mysql> CREATE TABLE Course(
+    -> CourseID varchar(25) PRIMARY KEY,
+    -> CourseTitle varchar(25) NOT NULL,
+    -> Credits int
+    -> );
+Query OK, 0 rows affected
+
+mysql> DESC Course;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| CourseID    | varchar(25) | NO   | PRI | NULL    |       |
+| CourseTitle | varchar(25) | NO   |     | NULL    |       |
+| Credits     | int         | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+3 rows in set
+
+========================================================================================================================================================================
+
+Create a table with named Instructor with attributes:
+● InstructorID (Primary Key)
+● FirstName
+● LastName
+● Email
+
+mysql> CREATE TABLE Instructor(
+    -> InstuctorID varchar(25) PRIMARY KEY,
+    -> FristName varchar(25) NOT NULL,
+    -> LastName varchar(25) NOT NULL,
+    -> Email varchar(50) NOT NULL
+    -> );
+Query OK, 0 rows affected
+
+mysql> DESC Instructor;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| InstuctorID | varchar(25) | NO   | PRI | NULL    |       |
+| FristName   | varchar(25) | NO   |     | NULL    |       |
+| LastName    | varchar(25) | NO   |     | NULL    |       |
+| Email       | varchar(50) | NO   |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+4 rows in set
+
+========================================================================================================================================================================
+
+Create a table with named Enrollment with attributes:
+● EnrollmentID (Primary Key)
+● EnrollmentDate
+● StudentID(Foreign key)
+● CourseID(Foreign Key)
+● InstructorID(Foreign key)
+
+ mysql> create table enrollment(
+     -> enrollmentId varchar(10) primary key,
+     -> dateOfEnrollment date,
+     -> studentId varchar(25),
+     -> courseId varchar(25),
+     -> instructorId varchar(25),
+     -> foreign key (studentId) references student(studentId),
+     -> foreign key (courseId) references course(courseId),
+     -> foreign key (instructorId) references instructor(instuctorId)
+     -> );
+ Query OK, 0 rows affected
+
+ 
+ mysql> desc enrollment;
+ +------------------+-------------+------+-----+---------+-------+
+ | Field            | Type        | Null | Key | Default | Extra |
+ +------------------+-------------+------+-----+---------+-------+
+ | enrollmentId     | varchar(10) | NO   | PRI | NULL    |       |
+ | dateOfEnrollment | date        | YES  |     | NULL    |       |
+ | studentId        | varchar(25) | YES  | MUL | NULL    |       |
+ | courseId         | varchar(25) | YES  | MUL | NULL    |       |
+ | instructorId     | varchar(25) | YES  | MUL | NULL    |       |
+ +------------------+-------------+------+-----+---------+-------+
+ 5 rows in set
+========================================================================================================================================================================
+
+Create a table with named Score with attributes:
+● ScoreID (Primary Key)
+● CourseID (Foreign key)
+● StudentID (Foreign Key)
+● DateOfExam
+● CreditObtained
+
+ mysql> CREATE TABLE Score(
+     -> ScoreID varchar(25) PRIMARY KEY,
+     -> CourseID varchar(25) NOT NULL,
+     -> StudentID varchar(25) NOT NULL,
+     -> DateOfExam date,
+     -> CreditObtained int,
+     -> FOREIGN KEY (CourseID) REFERENCES Course(CourseID),
+     -> FOREIGN KEY (StudentID) REFERENCES Student(StudentID)
+     -> );
+ Query OK, 0 rows affected
+
+ mysql> DESC Score;
+ +----------------+-------------+------+-----+---------+-------+
+ | Field          | Type        | Null | Key | Default | Extra |
+ +----------------+-------------+------+-----+---------+-------+
+ | ScoreID        | varchar(25) | NO   | PRI | NULL    |       |
+ | CourseID       | varchar(25) | NO   | MUL | NULL    |       |
+ | StudentID      | varchar(25) | NO   | MUL | NULL    |       |
+ | DateOfExam     | date        | YES  |     | NULL    |       |
+ | CreditObtained | int         | YES  |     | NULL    |       |
+ +----------------+-------------+------+-----+---------+-------+
+ 5 rows in set
+
+========================================================================================================================================================================
+
+Create a table with named Feedback with attributes:
+● FeedbackID (Primary Key)
+● StudentID (Foreign key)
+● Date
+● InstructorName
+● Feedback
+ 
+ mysql> CREATE TABLE Feedback (
+     -> FeedbackID varchar(30) PRIMARY KEY,
+     -> StudentID varchar(30) NOT NULL,
+     -> Date DATE,
+     -> InstructorName varchar(50) NOT NULL,
+     -> FeedbackText varchar(80) NOT NULL,
+     -> FOREIGN KEY (StudentID) REFERENCES Student(StudentID)
+     -> );
+ Query OK, 0 rows affected
+
+ mysql> DESC Feedback;
+ +----------------+-------------+------+-----+---------+-------+
+ | Field          | Type        | Null | Key | Default | Extra |
+ +----------------+-------------+------+-----+---------+-------+
+ | FeedbackID     | varchar(30) | NO   | PRI | NULL    |       |
+ | StudentID      | varchar(30) | NO   | MUL | NULL    |       |
+ | Date           | date        | YES  |     | NULL    |       |
+ | InstructorName | varchar(50) | NO   |     | NULL    |       |
+ | FeedbackText   | varchar(80) | NO   |     | NULL    |       |
+ +----------------+-------------+------+-----+---------+-------+
+ 5 rows in set
