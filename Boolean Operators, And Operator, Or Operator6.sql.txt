@@ -1,0 +1,42 @@
+Lab 1:
+Database Schema
+Use our database Ecommerce to complete the task.
+Task: Imagine you are managing an e-commerce platform, and the holiday season is
+approaching. To capitalize on the festive spirit and boost sales, you decide to organize a
+special seasonal sale featuring electronics. The goal is to offer discounts on electronics
+and include products with a price less than rs. 70,000 in the promotion.Write a query to
+find products from the "product" table that are either in the 'Electronics' category or
+have a price less than 70000.
+
+
+mysql> USE Ecommerce;
+Database changed
+
+/*Retrieve all columns for every product from the 'Product' table*/
+mysql> SELECT * from Product;
++------------+---------------------+-------------+--------------+-------+----------------+---------------+-----------------+
+| Product_Id | Product_Name        | Category    | Sub_Category | Stock | Original_Price | Selling_Price | Total_Price_GST |
++------------+---------------------+-------------+--------------+-------+----------------+---------------+-----------------+
+| P101       | HP-101              | Electronics | Laptop       |    10 |       50000.00 |      46500.00 |        51839.99 |
+| P102       | Apple macbook       | Electronics | Laptop       |     7 |       75000.00 |      69500.00 |        72981.99 |
+| P103       | Dell                | Electronics | Laptop       |     5 |       41000.00 |      39000.00 |        43593.99 |
+| P104       | Asus                | Electronics | Laptop       |     8 |       35000.00 |      32000.00 |        37338.99 |
+| P105       | Lamborghini         | Auto Mobile | Car          |     2 |    88900000.00 |   85900000.00 |     90000000.00 |
+| P106       | Mahindra Thar       | Auto Mobile | Car          |     5 |     1098000.00 |    1088000.00 |      1100000.00 |
+| P107       | Toyota Fortuner     | Auto Mobile | Car          |     4 |     5144000.00 |    5000000.00 |      5237000.00 |
+| P108       | Land Rover Defender | Auto Mobile | Car          |     3 |    23000000.00 |   22700000.00 |     23187600.00 |
++------------+---------------------+-------------+--------------+-------+----------------+---------------+-----------------+
+8 rows in set
+
+
+/* Retrieve products for the special seasonal sale featuring electronics or with a price less than Rs. 70,000 */
+mysql> SELECT * from Product WHERE Category = 'Electronics' OR Original_Price < 70000;
++------------+---------------+-------------+--------------+-------+----------------+---------------+-----------------+
+| Product_Id | Product_Name  | Category    | Sub_Category | Stock | Original_Price | Selling_Price | Total_Price_GST |
++------------+---------------+-------------+--------------+-------+----------------+---------------+-----------------+
+| P101       | HP-101        | Electronics | Laptop       |    10 |       50000.00 |      46500.00 |        51839.99 |
+| P102       | Apple macbook | Electronics | Laptop       |     7 |       75000.00 |      69500.00 |        72981.99 |
+| P103       | Dell          | Electronics | Laptop       |     5 |       41000.00 |      39000.00 |        43593.99 |
+| P104       | Asus          | Electronics | Laptop       |     8 |       35000.00 |      32000.00 |        37338.99 |
++------------+---------------+-------------+--------------+-------+----------------+---------------+-----------------+
+4 rows in set
