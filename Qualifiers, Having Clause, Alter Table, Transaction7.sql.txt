@@ -1,0 +1,205 @@
+Assignment 1:
+
+/*Switch to a specific database named "StudentManagementSystem"*/
+mysql> USE StudentManagementSystem;
+Database changed
+
+/*Retrieve all columns and records (rows) from the "Student" table*/
+mysql> SELECT * from Student;
++-----------+-----------+----------+-------------+--------+---------------------+------------+
+| StudentID | FirstName | LastName | DateOfBirth | Gender | Email               | Phone      |
++-----------+-----------+----------+-------------+--------+---------------------+------------+
+| S101      | Tina      | Das      | 2000-04-06  | Female | tinadas@gmail.com   | 9143265745 |
+| S102      | Mina      | Roy      | 2000-09-25  | Female | minaroy@gmail.com   | 9143098345 |
+| S103      | Ayush     | Khan     | 2001-02-15  | Male   | ayushkhan@gmail.com | 9775098346 |
+| S104      | Prihan    | Mondal   | 2000-05-17  | Male   | prihan@gmail.com    | 9732098654 |
+| S105      | Anu       | Kar      | 2000-08-29  | Female | anu_kar@gmail.com   | 9732012347 |
++-----------+-----------+----------+-------------+--------+---------------------+------------+
+5 rows in set
+
+_______________________________________________________________________________________________________________________________________________________________________
+
+Task1: Assume you are managing a database of student records, and you need toretrieve information about students born after May 31st, 2000.
+What will be the sql queryfor this?
+
+/*Retrieve all columns and records from the "Student" table where the "DateOfBirth" is later than May 31, 2000.*/
+mysql> SELECT * from Student WHERE DateOfBirth > '2000-05-31';
++-----------+-----------+----------+-------------+--------+---------------------+------------+
+| StudentID | FirstName | LastName | DateOfBirth | Gender | Email               | Phone      |
++-----------+-----------+----------+-------------+--------+---------------------+------------+
+| S102      | Mina      | Roy      | 2000-09-25  | Female | minaroy@gmail.com   | 9143098345 |
+| S103      | Ayush     | Khan     | 2001-02-15  | Male   | ayushkhan@gmail.com | 9775098346 |
+| S105      | Anu       | Kar      | 2000-08-29  | Female | anu_kar@gmail.com   | 9732012347 |
++-----------+-----------+----------+-------------+--------+---------------------+------------+
+3 rows in set
+
+=======================================================================================================================================================================
+
+Task2: Assume you have a database containing a "Student" table with informationabout students, including their first names. You want to retrieve 
+records of studentswhose first names start with either 'T' or 'P'. To achieve this,what will be your sql query?
+
+/*Retrieves all columns and records from the "Student" table where the "FirstName" starts with either 'T' or 'P'.*/
+mysql> SELECT * from Student WHERE FirstName LIKE 'T%' OR FirstName LIKE 'P%';
++-----------+-----------+----------+-------------+--------+-------------------+------------+
+| StudentID | FirstName | LastName | DateOfBirth | Gender | Email             | Phone      |
++-----------+-----------+----------+-------------+--------+-------------------+------------+
+| S101      | Tina      | Das      | 2000-04-06  | Female | tinadas@gmail.com | 9143265745 |
+| S104      | Prihan    | Mondal   | 2000-05-17  | Male   | prihan@gmail.com  | 9732098654 |
++-----------+-----------+----------+-------------+--------+-------------------+------------+
+2 rows in set
+
+=======================================================================================================================================================================
+
+Task 3 .Let's consider a scenario where you have a database with a "Student" table thatcontains information about students, 
+including their first names and email addresses.You want to retrieve records of students whose first name is not 'Mina' 
+and whose emailaddresses contain the domain '@gmail.com'. To achieve this, what will be your sql query?
+
+/*Retrieves all columns and records from the "Student" table where the "FirstName" is not 'Mina' and the "Email" contains the domain '@gmail.com'. */
+mysql> SELECT * from Student WHERE NOT FirstName = 'Mina' AND Email LIKE '%@gmail.com';
++-----------+-----------+----------+-------------+--------+---------------------+------------+
+| StudentID | FirstName | LastName | DateOfBirth | Gender | Email               | Phone      |
++-----------+-----------+----------+-------------+--------+---------------------+------------+
+| S101      | Tina      | Das      | 2000-04-06  | Female | tinadas@gmail.com   | 9143265745 |
+| S103      | Ayush     | Khan     | 2001-02-15  | Male   | ayushkhan@gmail.com | 9775098346 |
+| S104      | Prihan    | Mondal   | 2000-05-17  | Male   | prihan@gmail.com    | 9732098654 |
+| S105      | Anu       | Kar      | 2000-08-29  | Female | anu_kar@gmail.com   | 9732012347 |
++-----------+-----------+----------+-------------+--------+---------------------+------------+
+4 rows in set
+
+=======================================================================================================================================================================
+
+Assignment 2:
+
+/*Create a new database named "EmployeeRecords.*/
+mysql> CREATE Database EmployeeRecords;
+Query OK, 1 row affected
+_______________________________________________________________________________________________________________________________________________________________________
+
+Task1: Create a table Person with PersonID int, FirstName varchar(255),LastName varchar(255) and age (int).
+Make PersonID PRIMARY KEY.
+
+/*Switch the current database context to "EmployeeRecords".*/
+mysql> USE EmployeeRecords;
+Database changed
+
+/*Creating a new table named "Person" with four columns.*/
+mysql> CREATE Table Person (
+    -> PersonId int PRIMARY KEY,
+    -> FirstName varchar (20) NOT NULL,
+    -> LastName varchar (20) NOT NULL,
+    -> Age int);
+Query OK, 0 rows affected
+
+/*Describe the structure of the table named "Person".*/
+mysql> DESC Person;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| PersonId  | int         | NO   | PRI | NULL    |       |
+| FirstName | varchar(20) | NO   |     | NULL    |       |
+| LastName  | varchar(20) | NO   |     | NULL    |       |
+| Age       | int         | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set
+
+=======================================================================================================================================================================
+
+Task2: Create a table Employee with emp_id int, first_name varchar(255),last_name varchar(255) and age (int )
+Make emp_id PRIMARY KEY.
+
+/*Creating a new table named "Employee" with four columns.*/
+mysql> CREATE Table Employee (
+    -> Emp_Id int PRIMARY KEY,
+    -> FirstName varchar(20) NOT NULL,
+    -> LastName varchar(20) NOT NULL,
+    -> Age int );
+Query OK, 0 rows affected
+
+/*Describe the structure of the table named "Employee".*/
+mysql> DESC Employee;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| Emp_Id     | int         | NO   | PRI | NULL    |       |
+| FirstName | varchar(20) | NO   |     | NULL    |       |
+| LastName  | varchar(20) | NO   |     | NULL    |       |
+| Age        | int         | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+4 rows in set
+
+======================================================================================================================================================================
+
+Task 3: Insert data to Person table.
+
+/*Inserting multiple records into the "Person" table.*/
+mysql> INSERT INTO Person VALUES
+    -> (301, 'Ayan', 'Ghosh', 28),
+    -> (302, 'Sayan', 'Bose', 25),
+    -> (303, 'Rimi', 'Biswas', 23),
+    -> (304, 'Sujay', 'Bose', 29),
+    -> (305, 'Preeti', 'Kumari', 26);
+Query OK, 5 rows affected
+
+/*Retrieves all columns and records from the "Person" table.*/
+mysql> SELECT * from Person;
++----------+-----------+----------+------+
+| PersonId | FirstName | LastName | Age  |
++----------+-----------+----------+------+
+|      301 | Ayan      | Ghosh    |   28 |
+|      302 | Sayan     | Bose     |   25 |
+|      303 | Rimi      | Biswas   |   23 |
+|      304 | Sujay     | Bose     |   29 |
+|      305 | Preeti    | Kumari   |   26 |
++----------+-----------+----------+------+
+5 rows in set
+
+=======================================================================================================================================================================
+
+Task 4: Insert data to Employee table.
+
+/*Inserting data into the 'Employee' table*/
+mysql> INSERT INTO Employee VALUES
+    -> (501, 'Sharadiya', 'Roy', 27),
+    -> (502, 'Shraddha', 'Sinha', 25),
+    -> (503, 'Priyunshu', 'Gupta', 30),
+    -> (504, 'Tamojit', 'Nandi', 26),
+    -> (505, 'Archisha', 'Roy', 29);
+Query OK, 5 rows affected
+
+/*Retrieves all columns and records from the "Employee" table.*/
+mysql> SELECT *from Employee;
++--------+------------+-----------+------+
+| Emp_Id | FirstName | LastName | Age  |
++--------+------------+-----------+------+
+|    501 | Sharadiya  | Roy       |   27 |
+|    502 | Shraddha   | Sinha     |   25 |
+|    503 | Priyunshu  | Gupta     |   30 |
+|    504 | Tamojit    | Nandi     |   26 |
+|    505 | Archisha   | Roy       |   29 |
++--------+------------+-----------+------+
+5 rows in set
+
+=======================================================================================================================================================================
+
+Task 5: Create Union of two tables
+
+/*Merge and  retrieves distinct records from both the "Person" and "Employee" tables based on specific columns.*/
+mysql> SELECT PersonId, FirstName, LastName, Age from Person UNION
+    -> SELECT Emp_ID AS PersonId,  FirstName, LastName, Age from Employee;
++----------+-----------+----------+------+
+| PersonId | FirstName | LastName | Age  |
++----------+-----------+----------+------+
+|      301 | Ayan      | Ghosh    |   28 |
+|      302 | Sayan     | Bose     |   25 |
+|      303 | Rimi      | Biswas   |   23 |
+|      304 | Sujay     | Bose     |   29 |
+|      305 | Preeti    | Kumari   |   26 |
+|      501 | Sharadiya | Roy      |   27 |
+|      502 | Shraddha  | Sinha    |   25 |
+|      503 | Priyunshu | Gupta    |   30 |
+|      504 | Tamojit   | Nandi    |   26 |
+|      505 | Archisha  | Roy      |   29 |
++----------+-----------+----------+------+
+10 rows in set
+
+=======================================================================================================================================================================
