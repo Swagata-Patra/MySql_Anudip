@@ -1,0 +1,136 @@
+Task 1: Update the Student table with the following information:
+Change the email to 'anu_kar@gmail.com,where FirstName is 'Anu' and LastName is 'Kar'.
+
+/*Fetching all the records from Student table*/
+  mysql> SELECT * from Student;
+  +-----------+-----------+----------+-------------+--------+---------------------+------------+
+  | StudentID | FirstName | LastName | DateOfBirth | Gender | Email               | Phone      |
+  +-----------+-----------+----------+-------------+--------+---------------------+------------+
+  | S101      | Tina      | Das      | 2000-04-06  | Female | tinadas@gmail.com   | 9143265745 |
+  | S102      | Mina      | Roy      | 2000-09-25  | Female | minaroy@gmail.com   | 9143098345 |
+  | S103      | Ayush     | Khan     | 2001-02-15  | Male   | ayushkhan@gmail.com | 9775098346 |
+  | S104      | Prihan    | Mondal   | 2000-05-17  | Male   | prihan@gmail.com    | 9732098654 |
+  | S105      | Anu       | Kar      | 2000-08-29  | Female | anukar@gmail.com    | 9732012347 |
+  +-----------+-----------+----------+-------------+--------+---------------------+------------+
+  5 rows in set
+
+
+/*updating the email of a student named Anu Kar to 'anu_kar@gmail.com'*/
+  mysql> USE StudentManagementSystem;
+  Database changed
+  mysql> UPDATE Student Set Email = 'anu_kar@gmail.com' where FirstName = 'Anu' and LastName = 'Kar';
+  Query OK, 1 row affected
+
+
+/*Retrieving all data from the Student table*/
+  mysql> SELECT * from Student;
+  +-----------+-----------+----------+-------------+--------+---------------------+------------+
+  | StudentID | FirstName | LastName | DateOfBirth | Gender | Email               | Phone      |
+  +-----------+-----------+----------+-------------+--------+---------------------+------------+
+  | S101      | Tina      | Das      | 2000-04-06  | Female | tinadas@gmail.com   | 9143265745 |
+  | S102      | Mina      | Roy      | 2000-09-25  | Female | minaroy@gmail.com   | 9143098345 |
+  | S103      | Ayush     | Khan     | 2001-02-15  | Male   | ayushkhan@gmail.com | 9775098346 |
+  | S104      | Prihan    | Mondal   | 2000-05-17  | Male   | prihan@gmail.com    | 9732098654 |
+  | S105      | Anu       | Kar      | 2000-08-29  | Female | anu_kar@gmail.com   | 9732012347 |
+  +-----------+-----------+----------+-------------+--------+---------------------+------------+
+  5 rows in set
+
+=======================================================================================================================================================================
+
+Update the Instructor with the following information:
+Change the email to 'tritas_das@gmail.com' where FirstName of the instructor is 'Tritas' and LastName is 'Das'.
+
+/*Fetching all the records from Instructor table*/
+  mysql> select * from instructor;
+  +-------------+-----------+----------+----------------------+
+  | InstuctorID | FristName | LastName | Email                |
+  +-------------+-----------+----------+----------------------+
+  | I001        | Debjit    | Saha     | debjitsaha@gmail.com |
+  | I002        | Tanmay    | Kundu    | tanmay@gmail.com     |
+  | I003        | Brishti   | Sen      | brishti@gmail.com    |
+  | I004        | Tritas    | Das      | tritasdas@gmail.com  |
+  | I005        | Ananya    | Maity    | ananya@gmail.com     |
+  +-------------+-----------+----------+----------------------+
+  5 rows in set
+
+
+/*Update the Instructor table's email for a specific instructor*/
+  mysql> UPDATE Instructor SET Email = 'tritas_das@gmail.com' where FristName = 'Tritas' and LastName = 'Das';
+  Query OK, 1 row affected
+
+
+/*Retrieving all data from the Instructor table*/
+  mysql> SELECT * from Instructor;
+  +-------------+-----------+----------+----------------------+
+  | InstuctorID | FristName | LastName | Email                |
+  +-------------+-----------+----------+----------------------+
+  | I001        | Debjit    | Saha     | debjitsaha@gmail.com |
+  | I002        | Tanmay    | Kundu    | tanmay@gmail.com     |
+  | I003        | Brishti   | Sen      | brishti@gmail.com    |
+  | I004        | Tritas    | Das      | tritas_das@gmail.com |
+  | I005        | Ananya    | Maity    | ananya@gmail.com     |
+  +-------------+-----------+----------+----------------------+
+  5 rows in set
+
+=======================================================================================================================================================================
+
+Delete record from the Student table on following condition:
+Delete student/students records from the Student table where last name is 'Sinha'.
+
+/*Inserting a new row into the Student table*/
+  mysql> INSERT into Student values
+      -> ('S106', 'Arup', 'Sinha', '2000-03-03', 'Male', 'arup@gmail.com', 8760987632);
+  Query OK, 1 row affected
+
+
+/*Retrieving all data from the Student table*/
+  mysql> SELECT *from student;
+  +-----------+-----------+----------+-------------+--------+---------------------+------------+
+  | StudentID | FirstName | LastName | DateOfBirth | Gender | Email               | Phone      |
+  +-----------+-----------+----------+-------------+--------+---------------------+------------+
+  | S101      | Tina      | Das      | 2000-04-06  | Female | tinadas@gmail.com   | 9143265745 |
+  | S102      | Mina      | Roy      | 2000-09-25  | Female | minaroy@gmail.com   | 9143098345 |
+  | S103      | Ayush     | Khan     | 2001-02-15  | Male   | ayushkhan@gmail.com | 9775098346 |
+  | S104      | Prihan    | Mondal   | 2000-05-17  | Male   | prihan@gmail.com    | 9732098654 |
+  | S105      | Anu       | Kar      | 2000-08-29  | Female | anu_kar@gmail.com   | 9732012347 |
+  | S106      | Arup      | Sinha    | 2000-03-03  | Male   | arup@gmail.com      | 8760987632 |
+  +-----------+-----------+----------+-------------+--------+---------------------+------------+
+  6 rows in set
+
+
+/* Delete record from the Student table based on a specific condition */
+  mysql> DELETE from Student where LastName = 'Sinha';
+  Query OK, 1 row affected
+
+
+/*Retrieving all data from the Student table after deletion*/
+  mysql> SELECT * from student;
+  +-----------+-----------+----------+-------------+--------+---------------------+------------+
+  | StudentID | FirstName | LastName | DateOfBirth | Gender | Email               | Phone      |
+  +-----------+-----------+----------+-------------+--------+---------------------+------------+
+  | S101      | Tina      | Das      | 2000-04-06  | Female | tinadas@gmail.com   | 9143265745 |
+  | S102      | Mina      | Roy      | 2000-09-25  | Female | minaroy@gmail.com   | 9143098345 |
+  | S103      | Ayush     | Khan     | 2001-02-15  | Male   | ayushkhan@gmail.com | 9775098346 |
+  | S104      | Prihan    | Mondal   | 2000-05-17  | Male   | prihan@gmail.com    | 9732098654 |
+  | S105      | Anu       | Kar      | 2000-08-29  | Female | anu_kar@gmail.com   | 9732012347 |
+  +-----------+-----------+----------+-------------+--------+---------------------+------------+
+  5 rows in set
+
+=======================================================================================================================================================================
+
+
+Task 3:
+List the student whose first name starts with 'A'.
+
+/*Fetching the student names start with 'A'*/
+  mysql> SELECT * from Student where FirstName LIKE 'A%';
+  +-----------+-----------+----------+-------------+--------+---------------------+------------+
+  | StudentID | FirstName | LastName | DateOfBirth | Gender | Email               | Phone      |
+  +-----------+-----------+----------+-------------+--------+---------------------+------------+
+  | S103      | Ayush     | Khan     | 2001-02-15  | Male   | ayushkhan@gmail.com | 9775098346 |
+  | S105      | Anu       | Kar      | 2000-08-29  | Female | anu_kar@gmail.com   | 9732012347 |
+  +-----------+-----------+----------+-------------+--------+---------------------+------------+
+  2 rows in set
+ /*The '%' wildcard after 'P' in the LIKE operator matches any sequence of characters after 'P' */
+
+=======================================================================================================================================================================
