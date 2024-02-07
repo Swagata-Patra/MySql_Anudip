@@ -1,0 +1,78 @@
+Lab: Use the same student management system Database and table from previous lab. Perform the following commands on the table Student and Enrollment.
+
+/*Switch the current active database to "StudentManagementSystem".*/
+mysql> USE StudentManagementSystem;
+Database changed
+
+/*Retrieves all the records and columns from the "Student" table.*/
+mysql> SELECT * from Student;
++-----------+-----------+----------+-------------+--------+---------------------+------------+
+| StudentID | FirstName | LastName | DateOfBirth | Gender | Email               | Phone      |
++-----------+-----------+----------+-------------+--------+---------------------+------------+
+| S101      | Tina      | Das      | 2000-04-06  | Female | tinadas@gmail.com   | 9143265745 |
+| S102      | Mina      | Roy      | 2000-09-25  | Female | minaroy@gmail.com   | 9143098345 |
+| S103      | Ayush     | Khan     | 2001-02-15  | Male   | ayushkhan@gmail.com | 9775098346 |
+| S104      | Prihan    | Mondal   | 2000-05-17  | Male   | prihan@gmail.com    | 9732098654 |
+| S105      | Anu       | Kar      | 2000-08-29  | Female | anu_kar@gmail.com   | 9732012347 |
++-----------+-----------+----------+-------------+--------+---------------------+------------+
+5 rows in set
+
+/*Retrieves all the records and columns from the "Enrollment" table.*/
+mysql> SELECT * from Enrollment;
++--------------+------------------+-----------+----------+--------------+
+| enrollmentId | dateOfEnrollment | studentId | courseId | instructorId |
++--------------+------------------+-----------+----------+--------------+
+| E101         | 2023-06-10       | S101      | C101     | I001         |
+| E102         | 2023-07-10       | S102      | C102     | I002         |
+| E103         | 2023-08-10       | S103      | C103     | I003         |
+| E104         | 2023-09-10       | S104      | C104     | I004         |
+| E105         | 2023-10-11       | S105      | C105     | I005         |
++--------------+------------------+-----------+----------+--------------+
+5 rows in set
+
+_______________________________________________________________________________________________________________________________________________________________________
+
+1. Assume a university where students can enroll in various courses.Now, write down a
+FULL outer JOIN query to retrieve the details.
+
+/*Retrieves details of students and their enrollments using a FULL OUTER JOIN.*/
+mysql> SELECT * FROM Student s LEFT JOIN Enrollment e ON s.StudentID = e.StudentID
+    -> UNION ALL
+    -> SELECT * FROM Student s RIGHT JOIN Enrollment e ON s.StudentID = e.StudentID;
++-----------+-----------+----------+-------------+--------+---------------------+------------+--------------+------------------+-----------+----------+--------------+
+| StudentID | FirstName | LastName | DateOfBirth | Gender | Email               | Phone      | enrollmentId | dateOfEnrollment | studentId | courseId | instructorId |
++-----------+-----------+----------+-------------+--------+---------------------+------------+--------------+------------------+-----------+----------+--------------+
+| S101      | Tina      | Das      | 2000-04-06  | Female | tinadas@gmail.com   | 9143265745 | E101         | 2023-06-10       | S101      | C101     | I001         |
+| S102      | Mina      | Roy      | 2000-09-25  | Female | minaroy@gmail.com   | 9143098345 | E102         | 2023-07-10       | S102      | C102     | I002         |
+| S103      | Ayush     | Khan     | 2001-02-15  | Male   | ayushkhan@gmail.com | 9775098346 | E103         | 2023-08-10       | S103      | C103     | I003         |
+| S104      | Prihan    | Mondal   | 2000-05-17  | Male   | prihan@gmail.com    | 9732098654 | E104         | 2023-09-10       | S104      | C104     | I004         |
+| S105      | Anu       | Kar      | 2000-08-29  | Female | anu_kar@gmail.com   | 9732012347 | E105         | 2023-10-11       | S105      | C105     | I005         |
+| S101      | Tina      | Das      | 2000-04-06  | Female | tinadas@gmail.com   | 9143265745 | E101         | 2023-06-10       | S101      | C101     | I001         |
+| S102      | Mina      | Roy      | 2000-09-25  | Female | minaroy@gmail.com   | 9143098345 | E102         | 2023-07-10       | S102      | C102     | I002         |
+| S103      | Ayush     | Khan     | 2001-02-15  | Male   | ayushkhan@gmail.com | 9775098346 | E103         | 2023-08-10       | S103      | C103     | I003         |
+| S104      | Prihan    | Mondal   | 2000-05-17  | Male   | prihan@gmail.com    | 9732098654 | E104         | 2023-09-10       | S104      | C104     | I004         |
+| S105      | Anu       | Kar      | 2000-08-29  | Female | anu_kar@gmail.com   | 9732012347 | E105         | 2023-10-11       | S105      | C105     | I005         |
++-----------+-----------+----------+-------------+--------+---------------------+------------+--------------+------------------+-----------+----------+--------------+
+10 rows in set
+
+=======================================================================================================================================================================
+
+2. Assume a university where students can enroll in various courses.Now, write down a
+Natural JOIN query to retrieve the details.
+
+/*Performing a NATURAL JOIN between the Student and Enrollment tables, retrieving common columns based on matching names.*/
+mysql> SELECT * from Student
+    -> NATURAL JOIN
+    -> Enrollment;
++-----------+-----------+----------+-------------+--------+---------------------+------------+--------------+------------------+----------+--------------+
+| StudentID | FirstName | LastName | DateOfBirth | Gender | Email               | Phone      | enrollmentId | dateOfEnrollment | courseId | instructorId |
++-----------+-----------+----------+-------------+--------+---------------------+------------+--------------+------------------+----------+--------------+
+| S101      | Tina      | Das      | 2000-04-06  | Female | tinadas@gmail.com   | 9143265745 | E101         | 2023-06-10       | C101     | I001         |
+| S102      | Mina      | Roy      | 2000-09-25  | Female | minaroy@gmail.com   | 9143098345 | E102         | 2023-07-10       | C102     | I002         |
+| S103      | Ayush     | Khan     | 2001-02-15  | Male   | ayushkhan@gmail.com | 9775098346 | E103         | 2023-08-10       | C103     | I003         |
+| S104      | Prihan    | Mondal   | 2000-05-17  | Male   | prihan@gmail.com    | 9732098654 | E104         | 2023-09-10       | C104     | I004         |
+| S105      | Anu       | Kar      | 2000-08-29  | Female | anu_kar@gmail.com   | 9732012347 | E105         | 2023-10-11       | C105     | I005         |
++-----------+-----------+----------+-------------+--------+---------------------+------------+--------------+------------------+----------+--------------+
+5 rows in set
+
+=======================================================================================================================================================================
