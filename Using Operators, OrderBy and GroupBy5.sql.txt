@@ -1,0 +1,56 @@
+Lab 1-
+Database Schema:
+Use the same database scheme created in Previous Lab.
+Task: Let's consider a scenario where you want to retrieve information about students
+from a database table named student and display the results in ascending order based
+on their last names.
+
+/*Switching to the 'studentmanagementsystem' database*/
+mysql> USE studentmanagementsystem;
+Database changed
+
+/*Retrieve all columns for every student from the 'student' table*/
+mysql> SELECT * from student;
++-----------+-----------+----------+-------------+--------+---------------------+------------+
+| StudentID | FirstName | LastName | DateOfBirth | Gender | Email               | Phone      |
++-----------+-----------+----------+-------------+--------+---------------------+------------+
+| S101      | Tina      | Das      | 2000-04-06  | Female | tinadas@gmail.com   | 9143265745 |
+| S102      | Mina      | Roy      | 2000-09-25  | Female | minaroy@gmail.com   | 9143098345 |
+| S103      | Ayush     | Khan     | 2001-02-15  | Male   | ayushkhan@gmail.com | 9775098346 |
+| S104      | Prihan    | Mondal   | 2000-05-17  | Male   | prihan@gmail.com    | 9732098654 |
+| S105      | Anu       | Kar      | 2000-08-29  | Female | anu_kar@gmail.com   | 9732012347 |
++-----------+-----------+----------+-------------+--------+---------------------+------------+
+5 rows in set
+
+/* Retrieve student information sorted by last name in ascending order */
+mysql> SELECT * from student ORDER BY LastName ASC;
++-----------+-----------+----------+-------------+--------+---------------------+------------+
+| StudentID | FirstName | LastName | DateOfBirth | Gender | Email               | Phone      |
++-----------+-----------+----------+-------------+--------+---------------------+------------+
+| S101      | Tina      | Das      | 2000-04-06  | Female | tinadas@gmail.com   | 9143265745 |
+| S105      | Anu       | Kar      | 2000-08-29  | Female | anu_kar@gmail.com   | 9732012347 |
+| S103      | Ayush     | Khan     | 2001-02-15  | Male   | ayushkhan@gmail.com | 9775098346 |
+| S104      | Prihan    | Mondal   | 2000-05-17  | Male   | prihan@gmail.com    | 9732098654 |
+| S102      | Mina      | Roy      | 2000-09-25  | Female | minaroy@gmail.com   | 9143098345 |
++-----------+-----------+----------+-------------+--------+---------------------+------------+
+5 rows in set
+
+======================================================================================================================================================================
+
+Lab 2-
+Database Schema:
+Use the same database scheme created in Previous Lab.
+Task: Let's consider a scenario where you want to count the number of students based
+on their gender from a database table named Student.
+
+/* Retrieves the number of students grouped by gender */
+mysql> SELECT Gender, COUNT(*) AS NumberOfStudent from Student GROUP BY gender;
++--------+-----------------+
+| Gender | NumberOfStudent |
++--------+-----------------+
+| Female |               3 |
+| Male   |               2 |
++--------+-----------------+
+2 rows in set
+
+=======================================================================================================================================================================
