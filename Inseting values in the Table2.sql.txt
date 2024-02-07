@@ -1,0 +1,159 @@
+Lab 2. Use the Database and table from day 1 lab. Insert 5 records in each table
+and retrieve data from all tables and display.
+
+Ans.
+   /*Inserting five records in Student table*/
+
+    mysql> insert into student values
+        -> ('S101', 'Tina', 'Das', '2000-04-06', 'Female', 'tinadas@gmail.com', 9143265745),
+        -> ('S102', 'Mina', 'Roy', '2000-09-25', 'Female', 'minaroy@gmail.com', 9143098345),
+        -> ('S103', 'Ayush', 'Khan', '2001-02-15', 'Male', 'ayushkhan@gmail.com', 9775098346),
+        -> ('S104', 'Prihan', 'Mondal', '2000-05-17', 'Male', 'prihan@gmail.com', 9732098654),
+        -> ('S105', 'Anu', 'Kar', '2000-08-29', 'Female', 'anukar@gmail.com', 9732012347);
+    Query OK, 5 rows affected
+
+
+   /*Fetching all the records from Student table*/
+
+    mysql> SELECT * from Student;
+    +-----------+-----------+----------+-------------+--------+---------------------+------------+
+    | StudentID | FirstName | LastName | DateOfBirth | Gender | Email               | Phone      |
+    +-----------+-----------+----------+-------------+--------+---------------------+------------+
+    | S101      | Tina      | Das      | 2000-04-06  | Female | tinadas@gmail.com   | 9143265745 |
+    | S102      | Mina      | Roy      | 2000-09-25  | Female | minaroy@gmail.com   | 9143098345 |
+    | S103      | Ayush     | Khan     | 2001-02-15  | Male   | ayushkhan@gmail.com | 9775098346 |
+    | S104      | Prihan    | Mondal   | 2000-05-17  | Male   | prihan@gmail.com    | 9732098654 |
+    | S105      | Anu       | Kar      | 2000-08-29  | Female | anukar@gmail.com    | 9732012347 |
+    +-----------+-----------+----------+-------------+--------+---------------------+------------+
+    5 rows in set
+
+  =====================================================================================================================================================================
+  /* Inserting five records in Course table*/
+  
+    mysql> insert into Course values
+        -> ('C101', 'Java', 8),
+        -> ('C102', 'SQL', 7),
+        -> ('C103', 'Python', 9),
+        -> ('C104', 'DBMS', 8),
+        -> ('C105', 'Graphic Design', 10);
+   Query OK, 5 rows affected
+
+  /* Fetching all the records from Course table*/
+
+    mysql> SELECT * from Course;
+    +----------+----------------+---------+
+    | CourseID | CourseTitle    | Credits |
+    +----------+----------------+---------+
+    | C101     | Java           |       8 |
+    | C102     | SQL            |       7 |
+    | C103     | Python         |       9 |
+    | C104     | DBMS           |       8 |
+    | C105     | Graphic Design |      10 |
+    +----------+----------------+---------+
+    5 rows in set
+
+  =====================================================================================================================================================================
+  /* Inserting five records in Instructor table*/
+  
+    mysql> insert into Instructor values
+        -> ('I001', 'Debjit', 'Saha', 'debjitsaha@gmail.com'),
+        -> ('I002', 'Tanmay', 'Kundu', 'tanmay@gmail.com'),
+        -> ('I003', 'Brishti', 'Sen', 'brishti@gmail.com'),
+        -> ('I004', 'Tritas', 'Das', 'tritasdas@gmail.com'),
+        -> ('I005', 'Ananya', 'Maity', 'ananya@gmail.com');
+   Query OK, 5 rows affected 
+
+  /* Fetching all the records from Instructor table*/
+
+    mysql> SELECT * from Instructor;
+    +-------------+-----------+----------+----------------------+
+    | InstuctorID | FristName | LastName | Email                |
+    +-------------+-----------+----------+----------------------+
+    | I001        | Debjit    | Saha     | debjitsaha@gmail.com |
+    | I002        | Tanmay    | Kundu    | tanmay@gmail.com     |
+    | I003        | Brishti   | Sen      | brishti@gmail.com    |
+    | I004        | Tritas    | Das      | tritasdas@gmail.com  |
+    | I005        | Ananya    | Maity    | ananya@gmail.com     |
+    +-------------+-----------+----------+----------------------+
+   5 rows in set
+
+  =====================================================================================================================================================================
+  
+  /* Inserting five records in Enrollment table*/
+
+    mysql> insert into Enrollment values
+        -> ('E101', '2023-06-10', 'S101', 'C101', 'I001'),
+        -> ('E102', '2023-07-10', 'S102', 'C102', 'I002'),
+        -> ('E103', '2023-08-10', 'S103', 'C103', 'I003'),
+        -> ('E104', '2023-09-10', 'S104', 'C104', 'I004'),
+        -> ('E105', '2023-10-11', 'S105', 'C105', 'I005');
+    Query OK, 5 rows affected 
+
+
+  /* Fetching all the records from Enrollment table*/
+
+    mysql> SELECT * from Enrollment;
+    +--------------+------------------+-----------+----------+--------------+
+    | enrollmentId | dateOfEnrollment | studentId | courseId | instructorId |
+    +--------------+------------------+-----------+----------+--------------+
+    | E101         | 2023-06-10       | S101      | C101     | I001         |
+    | E102         | 2023-07-10       | S102      | C102     | I002         |
+    | E103         | 2023-08-10       | S103      | C103     | I003         |
+    | E104         | 2023-09-10       | S104      | C104     | I004         |
+    | E105         | 2023-10-11       | S105      | C105     | I005         |
+    +--------------+------------------+-----------+----------+--------------+
+    5 rows in set
+
+   ====================================================================================================================================================================
+  
+  /* Inserting five records in Score table*/
+
+    mysql> insert into Score values
+        -> ('SC001', 'C101', 'S101', '2023-08-11', 89),
+        -> ('SC002', 'C102', 'S102', '2023-08-19', 87),
+        -> ('SC003', 'C103', 'S103', '2023-10-13', 78),
+        -> ('SC004', 'C104', 'S104', '2023-11-15', 90),
+        -> ('SC005', 'C105', 'S105', '2023-11-30', 88);
+   Query OK, 5 rows affected
+
+
+  /* Fetching all the records from Score table*/
+
+    mysql> SELECT * from Score;
+    +---------+----------+-----------+------------+----------------+
+    | ScoreID | CourseID | StudentID | DateOfExam | CreditObtained |
+    +---------+----------+-----------+------------+----------------+
+    | SC001   | C101     | S101      | 2023-08-11 |             89 |
+    | SC002   | C102     | S102      | 2023-08-19 |             87 |
+    | SC003   | C103     | S103      | 2023-10-13 |             78 |
+    | SC004   | C104     | S104      | 2023-11-15 |             90 |
+    | SC005   | C105     | S105      | 2023-11-30 |             88 |
+    +---------+----------+-----------+------------+----------------+
+   5 rows in set
+
+   =======================================================================================================================================================================
+
+  /* Inserting five records in Feedback table*/
+
+    mysql> insert into Feedback values
+        -> ('FB001', 'S101', '2023-08-20', 'Debjit Saha', 'Excellent teaching style, very engaging'),
+        -> ('FB002', 'S102', '2023-08-26', 'Tanmay Kundu', 'Helped me understand complex concepts easily.'),
+        -> ('FB003', 'S103', '2023-10-15', 'Brishti Sen', 'Great instructor, very knowledgeable.'),
+        -> ('FB004', 'S104', '2023-10-18', 'Tritas Das', 'Clear explanations, enjoyed the sessions.'),
+        -> ('FB005', 'S105', '2024-01-02', 'Ananya Maity', 'Instructor was supportive, made learning fun.');
+    Query OK, 5 rows affected
+
+
+  /* Fetching all the records from Feedback table*/
+
+   mysql> SELECT * from Feedback;
+   +------------+-----------+------------+----------------+-----------------------------------------------+
+   | FeedbackID | StudentID | Date       | InstructorName | FeedbackText                                  |
+   +------------+-----------+------------+----------------+-----------------------------------------------+
+   | FB001      | S101      | 2023-08-20 | Debjit Saha    | Excellent teaching style, very engaging       |
+   | FB002      | S102      | 2023-08-26 | Tanmay Kundu   | Helped me understand complex concepts easily. |
+   | FB003      | S103      | 2023-10-15 | Brishti Sen    | Great instructor, very knowledgeable.         |
+   | FB004      | S104      | 2023-10-18 | Tritas Das     | Clear explanations, enjoyed the sessions.     |
+   | FB005      | S105      | 2024-01-02 | Ananya Maity   | Instructor was supportive, made learning fun. |
+   +------------+-----------+------------+----------------+-----------------------------------------------+
+   5 rows in set
