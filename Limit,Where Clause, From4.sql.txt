@@ -1,0 +1,140 @@
+/*Creating a Database named BankAccountManagementSystem.*/
+
+mysql> CREATE Database BankAccountManagementSystem;
+Query OK, 1 row affected
+mysql> SHOW Databases;
++-----------------------------+
+| Database                    |
++-----------------------------+
+| bankaccountmanagementsystem |
+| information_schema          |
+| mysql                       |
+| performance_schema          |
+| sakila                      |
+| studentmanagementsystem     |
+| sys                         |
+| world                       |
++-----------------------------+
+8 rows in set
+
+
+/*Select the newly created database.*/
+
+mysql> USE BankAccountManagementSystem;
+Database changed
+mysql> CREATE table BankAccount(
+    -> Account_id int PRIMARY KEY,
+    -> Account_holder_name varchar(25),
+    -> Account_balance int
+    -> );
+Query OK, 0 rows affected
+
+mysql> DESC BankAccount;
++---------------------+-------------+------+-----+---------+-------+
+| Field               | Type        | Null | Key | Default | Extra |
++---------------------+-------------+------+-----+---------+-------+
+| Account_id          | int         | NO   | PRI | NULL    |       |
+| Account_holder_name | varchar(25) | YES  |     | NULL    |       |
+| Account_balance     | int         | YES  |     | NULL    |       |
++---------------------+-------------+------+-----+---------+-------+
+3 rows in set
+
+=======================================================================================================================================================================
+
+Task 1: Insert Data
+Write an SQL INSERT statement to insert data into the BankAccount table.
+
+
+/*Inserting five records into the BankAccount table*/
+
+mysql> INSERT into BankAccount Values
+    -> (10001, 'Gourab Kumar', 55000),
+    -> (10002, 'Sunidhi Biswas', 31000),
+    -> (10003, 'Rishav Sinha', 70000),
+    -> (10004, 'Tiyasa Sarkar', 83000),
+    -> (10005, 'Bipul Bose', 49000);
+Query OK, 5 rows affected
+
+
+/*Fetching all the records from the BankAccount table*/
+
+mysql> SELECT * from BankAccount;
++------------+---------------------+-----------------+
+| Account_id | Account_holder_name | Account_balance |
++------------+---------------------+-----------------+
+|      10001 | Gourab Kumar        |           55000 |
+|      10002 | Sunidhi Biswas      |           31000 |
+|      10003 | Rishav Sinha        |           70000 |
+|      10004 | Tiyasa Sarkar       |           83000 |
+|      10005 | Bipul Bose          |           49000 |
++------------+---------------------+-----------------+
+5 rows in set
+
+======================================================================================================================================================================
+
+Task-2 : Retrieving Data
+Write an SQL SELECT statement to retrieve the account_holder_name and account_balance of all account holders from the BankAccount table.
+
+
+/*Retrieving the account_holder_name andaccount_balance of all account holders of all account holders from the BankAccount table.*/
+
+mysql> SELECT account_holder_name, Account_balance
+    -> from BankAccount;
++---------------------+-----------------+
+| account_holder_name | Account_balance |
++---------------------+-----------------+
+| Gourab Kumar        |           55000 |
+| Sunidhi Biswas      |           31000 |
+| Rishav Sinha        |           70000 |
+| Tiyasa Sarkar       |           83000 |
+| Bipul Bose          |           49000 |
++---------------------+-----------------+
+5 rows in set
+
+======================================================================================================================================================================
+
+Task 3: Filtering Data
+Write an SQL SELECT statement to retrieve the account_holder_name andaccount_balance where the account_balance is more than 50,000.
+
+
+/*Retrieving the account_holder_name and account_balance where the account_balance is more than 50,000.*/
+
+mysql> SELECT account_holder_name, Account_balance
+    -> from BankAccount
+    -> where Account_balance > 50000;
++---------------------+-----------------+
+| account_holder_name | Account_balance |
++---------------------+-----------------+
+| Gourab Kumar        |           55000 |
+| Rishav Sinha        |           70000 |
+| Tiyasa Sarkar       |           83000 |
++---------------------+-----------------+
+3 rows in set
+
+======================================================================================================================================================================
+
+Task 4: Updating Data
+Write an SQL UPDATE statement to change the account_balance of the account holder whose ID is 10001.
+
+
+/*Updating the account_balance of the account holder whose ID is 10001.*/
+
+mysql> UPDATE BankAccount
+    -> SET Account_balance = 65000 where Account_id = 10001;
+Query OK, 1 row affected
+
+
+/*Fetching all the records from BankAccount table*/
+
+mysql> SELECT * from BankAccount;
++------------+---------------------+-----------------+
+| Account_id | Account_holder_name | Account_balance |
++------------+---------------------+-----------------+
+|      10001 | Gourab Kumar        |           65000 |
+|      10002 | Sunidhi Biswas      |           31000 |
+|      10003 | Rishav Sinha        |           70000 |
+|      10004 | Tiyasa Sarkar       |           83000 |
+|      10005 | Bipul Bose          |           49000 |
++------------+---------------------+-----------------+
+5 rows in set
+
